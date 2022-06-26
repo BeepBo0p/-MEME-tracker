@@ -28,7 +28,7 @@ counter=0
 
 
 # runs request multiple times
-for tweet in  tweepy.Cursor(api.user_timeline, screen_name=user, count=100, tweet_mode='extended', exclude_replies=True).items(limit):
+for tweet in tweepy.Cursor(api.user_timeline, screen_name=user, count=100, tweet_mode='extended', exclude_replies=True).items(limit):
     try:
         if keyword in tweet.full_text:
             print(str(counter) + ' ' + tweet.user.name + ': ' + tweet.full_text)
