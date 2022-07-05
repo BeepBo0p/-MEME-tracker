@@ -45,3 +45,19 @@ Virtual environment created according to [this guide](https://realpython.com/pyt
 
 ---
 
+## Useful development plugins
+
+- Python related:
+    - [Python Environment Manager](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-environment-manager)
+    - [Python Indent](https://marketplace.visualstudio.com/items?itemName=KevinRose.vsc-python-indent)
+- Git (gud):
+    - [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
+    - [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
+    - [GitLens - Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+- General QoL:
+    - [TODO Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
+    - [TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
+    - [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced)
+    - [Project Manager](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager)
+- MongoDB
+    - [MongoDB for VS Code](https://marketplace.visualstudio.com/items?itemName=mongodb.mongodb-vscode)
