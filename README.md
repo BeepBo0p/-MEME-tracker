@@ -7,7 +7,13 @@ A project to learn dataset creation, API-usage, and data analysis using:
 
 ---
 
-## Virtual environment setup
+## Virtual environment
+
+### Y though?
+
+Python is bad at managing dependencies, especially when everything is run at a global level. We use virtual environments to get around this
+
+### Virtual environment setup
 
 Virtual environment created according to [this guide](https://realpython.com/python-virtual-environments-a-primer/)
 
