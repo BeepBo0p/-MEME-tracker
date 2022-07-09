@@ -2,6 +2,8 @@ import tweepy
 import configparser
 import pandas as pd
 
+# Finds tweets by Elon Musk AND contains #dogecoin
+
 # read configs
 config = configparser.ConfigParser()
 config.read('config.ini')

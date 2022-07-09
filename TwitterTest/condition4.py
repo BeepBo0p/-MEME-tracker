@@ -2,7 +2,7 @@ import tweepy
 import configparser
 import pandas as pd
 
-# Find tweets with more than 10 000 retweets AND contains #bitcoin
+# Finds tweets where #bitcoin is mentioned more than 10 000 times in a day
 
 # read configs
 config = configparser.ConfigParser()
@@ -23,19 +23,19 @@ api = tweepy.API(auth)
 
 
 # search tweets
-search = '#bitcoin'
-limit=5                                      #increase
-nrRetweets=10000
+user = 'elonmusk'
+keyword = 'Dogecoin'                            #case-sensitive
+limit=2                                       #increase
 counter=0
 
 
 # runs request multiple times
-for tweet in tweepy.Cursor(api.search_tweets, q=search, count=100, tweet_mode='extended').items(limit):
+for tweet in tweepy.Cursor(api.mentions_timeline, screen_name=user, count=100, tweet_mode='extended', exclude_replies=True).items(limit):
     try:
-        if tweet.retweet_count > nrRetweets:
+        if keyword in tweet.full_text:
             print(str(counter) + ' ' + tweet.user.name + ': ' + tweet.full_text)
         else:
-            print(str(counter) + ' Not enough RTs')
+            print(str(counter) + ' Does not contain: ' + keyword)
     except tweepy.TweepyException as e:
         print(e.reason)
     except StopIteration:
