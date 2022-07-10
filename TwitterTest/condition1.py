@@ -2,6 +2,8 @@ import tweepy
 import configparser
 import pandas as pd
 
+# Find tweets with more than 10 000 retweets AND contains #bitcoin
+
 # read configs
 config = configparser.ConfigParser()
 config.read('config.ini')
