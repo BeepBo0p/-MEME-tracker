@@ -1,6 +1,7 @@
 import tweepy
 import configparser
 import pandas as pd
+import json
 
 # Finds number of tweets from Elon Musk where Dogecoin is mentioned in an ID interval
 
@@ -30,7 +31,7 @@ untilId = 1545166492408328193                 #untilDate = '2010-12-28'
 nrKeywords = 0
 limit=5                                       #increase
 counter=0
-
+df = pd.DataFrame()
 
 # runs request multiple times
 for tweet in tweepy.Cursor(api.user_timeline, screen_name=user, since_id=fromId, max_id=untilId, count=100, tweet_mode='extended', exclude_replies=True).items(limit):
@@ -45,8 +46,10 @@ for tweet in tweepy.Cursor(api.user_timeline, screen_name=user, since_id=fromId,
     except StopIteration:
         break
     
+    df = df.append(pd.DataFrame([tweet._json]))
     counter += 1
 
-print(nrKeywords)
+
+
 
 #condition: (your keyword without the brackets) since:2010-12-27 until:2013-12-22
