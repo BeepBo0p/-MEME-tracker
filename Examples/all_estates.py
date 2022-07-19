@@ -4,6 +4,7 @@ from datetime import datetime
 import pandas as pd
 import json
 import time
+import pymongo
 
 class AllEstatesQuery(Query):
 
