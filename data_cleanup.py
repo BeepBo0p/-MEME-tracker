@@ -1,4 +1,5 @@
 import pandas as pd
+import db_connection 
 
 # Function declaration
 
@@ -45,13 +46,21 @@ index_drop_list = ["id",
 
 pruned_data_df = raw_data_df.drop(columns=index_drop_list)
 
+pruned_data_json = pruned_data_df.to_json()
+
+db_connection.upload_to_db('TWEETS', pruned_data_json)
+
+
 # Extracts entities and puts them in seperate dataframe
 
 entity_df = pd.DataFrame(list(pruned_data_df['entities']))
 
-#print(entity_df.columns)
+print(entity_df.columns)
 
 #TODO: Separate into hashtags and cashtags. Drop indices and store all instances of symbols
+
+hashtags_json = entity_df['hashtags'].to_dict()
+
 
 
 def main():
