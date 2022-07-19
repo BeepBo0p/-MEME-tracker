@@ -51,8 +51,11 @@ entity_df = pd.DataFrame(list(pruned_data_df['entities']))
 
 #print(entity_df.columns)
 
-hashtag_df = pd.DataFrame(list(entity_df['hashtags']))
-symbols_df = pd.DataFrame(list(entity_df['symbols']))
+#TODO: Separate into hashtags and cashtags. Drop indices and store all instances of symbols
 
-print(hashtag_df.columns)
-print(symbols_df.columns)
+
+def main():
+
+    #TODO: Do all the things
+    
+    return None
