@@ -5,7 +5,8 @@ import json
 from api import *
 from db_connection import *
 
-target_collection = 'tweets'
+tweets_collection = 'tweets'
+hashtags_collection = 'hashtags'
 number_of_items = 100
 
 # Read data from MongoDB

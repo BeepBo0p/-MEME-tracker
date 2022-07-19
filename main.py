@@ -20,3 +20,4 @@ def main():
     # print()
     # print('Script finished successfully!')
 
+    return True
