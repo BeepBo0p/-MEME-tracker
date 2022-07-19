@@ -1,38 +1,39 @@
-from html import entities
 import tweepy
 import pandas as pd
 import json
 from api import *
 from db_connection import *
 
-tweets_collection = 'tweets'
-hashtags_collection = 'hashtags'
-number_of_items = 100
+def analyse_tweets():
 
-# Read data from MongoDB
-tweets = get_docs_in_collection(tweets_collection, number_of_items)
-hashtags = get_docs_in_collection(hashtags_collection, number_of_items)
-tweets_df = pd.DataFrame(tweets.clone())
-hashtags_df = pd.DataFrame(hashtags.clone())
+    tweets_collection = 'tweets'
+    hashtags_collection = 'hashtags'
+    number_of_items = 100
+
+    # Read data from MongoDB
+    tweets = get_docs_in_collection(tweets_collection, number_of_items)
+    hashtags = get_docs_in_collection(hashtags_collection, number_of_items)
+    tweets_df = pd.DataFrame(tweets.clone())
+    hashtags_df = pd.DataFrame(hashtags.clone())
 
 
-# Hashtags
-number_of_hashtags = tweets_df['entities']['hashtags'].groupby(['hashtags']).size()
-print('Number of hashtags:')
-print(number_of_hashtags)
-print()
+    # Hashtags
+    number_of_hashtags = tweets_df['entities']['hashtags'].groupby(['hashtags']).size()
+    print('Number of hashtags:')
+    print(number_of_hashtags)
+    print()
 
-# Favorite Count
-top_five_favorite_count = tweets_df['favorite_count'].sort_values(by=['favorite_count'], inplace=True).head(5)
-print('Top five Tweets by favorites:')
-print(top_five_favorite_count)
-print()
+    # Favorite Count
+    top_five_favorite_count = tweets_df['favorite_count'].sort_values(by=['favorite_count'], inplace=True).head(5)
+    print('Top five Tweets by favorites:')
+    print(top_five_favorite_count)
+    print()
 
-# Retweet Count
-top_five_retweet_count = tweets_df['retweet_count'].sort_values(by=['retweet_count'], inplace=True).head(5)
-print('Top five Tweets by retweets:')
-print(top_five_retweet_count)
-print()
+    # Retweet Count
+    top_five_retweet_count = tweets_df['retweet_count'].sort_values(by=['retweet_count'], inplace=True).head(5)
+    print('Top five Tweets by retweets:')
+    print(top_five_retweet_count)
+    print()
 
 # index_drop_list = ["id",
 #                    "truncated",
