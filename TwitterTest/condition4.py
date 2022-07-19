@@ -1,26 +1,11 @@
 import tweepy
 import configparser
 import pandas as pd
+import json
+from api import *
 
 # Finds number of tweets from Elon Musk where Dogecoin is mentioned in an ID interval
-
-# read configs
-config = configparser.ConfigParser()
-config.read('config.ini')
-
-api_key = config['twitter']['api_key']
-api_key_secret = config['twitter']['api_key_secret']
-
-access_token = config['twitter']['access_token']
-access_token_secret = config['twitter']['access_token_secret']
-
-
-# authentication
-auth = tweepy.OAuthHandler(api_key, api_key_secret)
-auth.set_access_token(access_token, access_token_secret)
-
-api = tweepy.API(auth)
-
+api = twitter_setup()
 
 # search tweets
 user = 'elonmusk'
@@ -30,7 +15,7 @@ untilId = 1545166492408328193                 #untilDate = '2010-12-28'
 nrKeywords = 0
 limit=5                                       #increase
 counter=0
-
+df = pd.DataFrame()
 
 # runs request multiple times
 for tweet in tweepy.Cursor(api.user_timeline, screen_name=user, since_id=fromId, max_id=untilId, count=100, tweet_mode='extended', exclude_replies=True).items(limit):
@@ -45,8 +30,10 @@ for tweet in tweepy.Cursor(api.user_timeline, screen_name=user, since_id=fromId,
     except StopIteration:
         break
     
+    df = pd.concat([df, pd.DataFrame([tweet._json])], axis=0)
     counter += 1
 
-print(nrKeywords)
+
+print(df)
 
 #condition: (your keyword without the brackets) since:2010-12-27 until:2013-12-22

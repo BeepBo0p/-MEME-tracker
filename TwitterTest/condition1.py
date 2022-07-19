@@ -24,8 +24,8 @@ api = tweepy.API(auth)
 
 # search tweets
 search = '#bitcoin'
-limit=5                                      #increase
-nrRetweets=10000
+limit=100                                      #increase
+nrRetweets=5
 counter=0
 
 
