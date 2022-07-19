@@ -11,7 +11,7 @@ api = twitter_setup()
 search = '('
 
 # Add hashtags to search
-resources_df = pd.read_csv('../resources/hashtag.csv')
+resources_df = pd.read_csv('./resources/hashtag.csv')
 hashtags = resources_df['Hashtags']
 
 for hashtag in hashtags:
@@ -54,6 +54,6 @@ print('Hentet ' + str(counter) + ' tweets.')
 print(str(cash_counter) + ' av de inneholder $.')
 print()
 # print(df)
-tweets_df.to_json(r'../resources/tweets.json', orient='records', default_handler=str)
+tweets_df.to_json(r'./resources/tweets.json', orient='records', default_handler=str)
 
 #condition: (your keyword without the brackets) since:2010-12-27 until:2013-12-22
