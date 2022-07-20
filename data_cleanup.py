@@ -49,6 +49,7 @@ pruned_data_df = raw_data_df.drop(columns=index_drop_list)
 pruned_data_json = pruned_data_df.to_dict('records')
 #print(pruned_data_json)
 
+db_connection.connect_to_db()['TWEETS'].delete_many({}) #NOTE: Added to remove all documents in db inbetween runs
 db_connection.upload_to_db('TWEETS', pruned_data_json)
 
 
