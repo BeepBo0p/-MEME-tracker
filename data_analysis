@@ -6,8 +6,8 @@ from db_connection import *
 
 def analyse_tweets():
 
-    tweets_collection = 'tweets'
-    hashtags_collection = 'hashtags'
+    tweets_collection = 'TWEETS'
+    hashtags_collection = 'HASHTAGS'
     number_of_items = 100
 
     # Read data from MongoDB

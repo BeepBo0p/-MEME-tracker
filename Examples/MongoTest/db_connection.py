@@ -20,7 +20,7 @@ def get_collection_list():
     
     db = connect_to_db()
     
-    return db._list_collections()
+    return db.list_collections()
 
 # Creates a collection in the database, unless naming conflict, in which error is returned
 def create_collection(collection_name):

@@ -20,7 +20,18 @@ def get_collection_list():
     
     db = connect_to_db()
     
-    return db._list_collections()
+    return db.list_collections()
+
+# Returns list with names of all collections currently in database
+def get_collection_names():
+
+    collection_list = get_collection_list()
+    collection_names = []
+
+    for collection in collection_list:
+        collection_names.append(collection['name'])
+
+    return collection_names
 
 # Creates a collection in the database, unless naming conflict, in which error is returned
 def create_collection(collection_name):
@@ -29,10 +40,11 @@ def create_collection(collection_name):
 
 # Uploads a list on the format [{json object 1}, ... , {json object n}] to a collection in the database
 def upload_to_db(target_collection, list_of_json):
-    
-    db = connect_to_db()
 
-    if(target_collection in get_collection_list()):
+    db = connect_to_db()
+    # print(list_of_json)
+
+    if(target_collection in get_collection_names()):
         
         db[target_collection].insert_many(list_of_json)
         #TODO: make sure no errors occur
@@ -46,7 +58,7 @@ def upload_to_db(target_collection, list_of_json):
         #TODO: handle this case
         
         
-    return None
+    # return None
 
 # Returns list of objects from collection in database (if collection exists, otherwise None). Defaults to 50 items.
 # Returned data on the format [{json object 1}, ... , {json object n}]
