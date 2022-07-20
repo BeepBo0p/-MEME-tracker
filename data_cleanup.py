@@ -46,7 +46,8 @@ index_drop_list = ["id",
 
 pruned_data_df = raw_data_df.drop(columns=index_drop_list)
 
-pruned_data_json = pruned_data_df.to_json()
+pruned_data_json = pruned_data_df.to_dict()
+# print(pruned_data_json.keys())
 
 db_connection.upload_to_db('TWEETS', pruned_data_json)
 
