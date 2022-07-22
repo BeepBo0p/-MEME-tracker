@@ -35,6 +35,8 @@ def analyse_tweets():
     print(top_five_retweet_count)
     print()
 
+analyse_tweets()
+
 # index_drop_list = ["id",
 #                    "truncated",
 #                    "display_text_range",

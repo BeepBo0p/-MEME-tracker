@@ -86,7 +86,7 @@ hashtags_df = entities_df.drop(columns=['symbols'])
 3. Unpack hashtags[] so that you get 2 x N matrix with id_str and hashtag dict coloumns
 
  
-4. Somehow drop 'inidices' field in hashtag-dict so you're left with N rows with 'id_str' and 'hashtag' coloumns
+4. Somehow drop 'indices' field in hashtag-dict so you're left with N rows with 'id_str' and 'hashtag' coloumns
 """
 
 hashtags_df['hashtags'] = hashtags_df['hashtags'].apply(lambda x: [i.get('text') for i in x])

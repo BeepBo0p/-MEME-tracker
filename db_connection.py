@@ -66,7 +66,7 @@ def get_docs_in_collection(target_collection, number_of_items=50):
     
     db = connect_to_db()
 
-    if(target_collection in get_collection_list()):
+    if(target_collection in get_collection_names()):
         
         items = db[target_collection].find().limit(number_of_items)
         #TODO: make sure no errors occur

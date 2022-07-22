@@ -15,7 +15,7 @@ def main():
     # print('Cleanup finished successfully.')
     # print()
     # print('Analysis starting...')
-    # analyse_tweets()
+    analyse_tweets()
     # print('Analysis finished successfully')
     # print()
     # print('Script finished successfully!')
