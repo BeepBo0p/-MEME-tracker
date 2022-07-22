@@ -3,3 +3,5 @@
 python -m venv venv
 source venv/bin/activate
 python -m pip install -r requirements.txt
+echo Done!
+echo Use commmand \'source venv/bin/activate\' to activate virtual environment

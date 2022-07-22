@@ -53,17 +53,30 @@ db_connection.connect_to_db()['TWEETS'].delete_many({}) #NOTE: Added to remove a
 db_connection.upload_to_db('TWEETS', pruned_data_json)
 
 
-# Extracts entities and puts them in seperate dataframe
-
-entity_df = pd.DataFrame(list(pruned_data_df['entities']))
-
-#print(entity_df.columns)
-
 #TODO: Separate into hashtags and cashtags. Drop indices and store all instances of symbols
 
-hashtags_json = entity_df['hashtags'].to_dict()
+"""
+TODO: implement the following
 
-
+How to get desired hashtag-dataset:
+    
+1. From pruned data, get df with id_str and entities[] coloumns
+    
+2. Seperate this into hashtag_df with id_str and hashtags[] coloumns
+    
+3. Unpack hashtags[] so that you get 2 x N matrix with id_str and hashtag dict coloumns
+    
+4. Somehow drop 'inidices' field in hashtag-dict so you're left with N rows with 'id_str' and 'hashtag' coloumns
+    
+5. Create size M set-object containing all 'hashtag' values
+    
+6. Create df with 'id_str' as row index and coloumns for all M hashstags
+    
+7. Create matrix such that for each row, a cell is marked '1' if it contains hashtag, '0' otherwise
+    
+8. You now have an occurance matrix that contains info about prevalance of hashtags, as well as info about which 
+hashtags are found in the same tweets
+"""
 
 def main():
 

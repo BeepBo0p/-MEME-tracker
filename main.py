@@ -21,3 +21,5 @@ def main():
     # print('Script finished successfully!')
 
     return True
+
+main()
