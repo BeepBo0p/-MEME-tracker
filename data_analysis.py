@@ -70,6 +70,16 @@ def analyse_tweets():
         counter += 1
     print()
 
+    # Visualization                                       # Trenger data på listeformat
+    
+    # plt.bar(user_name, favorite_count)
+    # add_value_label(user_name, favorite_count)
+    # plt.title('Top five Tweets by favorites')
+    # plt.xlabel('Users')
+    # plt.ylabel('Favorite Count')
+    # # plt.legend(user_name, loc='upper right')          # Funker ikke
+    # plt.show()
+
 
     ### Favorite Count ###
     top_five_favorite_count = tweets_df.copy().sort_values(by=['favorite_count'], ascending=False).head(5)
