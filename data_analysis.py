@@ -77,16 +77,13 @@ def analyse_tweets():
     # Printing
     print('### Favorite Count ###')
     print('Top five Tweets by favorites')
-    print('No   Favorite Count  User')
-    print(top_five_favorite_count.columns)
+    print('No   Count  User')
     counter = 1
-    for tweet in top_five_favorite_count:
-        print(tweet[2])
-        # print(tweet['favorite_count'])
-        # print(str(counter) + ': ' + tweet['user'] + '   ' + str(tweet['favorite_count'])
+    for tweet in range(5):
+        favorite_count = top_five_favorite_count['favorite_count'].values[tweet]
+        user = top_five_favorite_count['user'].values[tweet]['name']
+        print(str(counter) + ':   ' + str(favorite_count) + '      ' + user)
         counter += 1
-    
-    print(top_five_favorite_count)
     print()
 
     ### Retweet Count ###
