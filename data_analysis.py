@@ -1,6 +1,9 @@
+from turtle import title
 import tweepy
 import pandas as pd
 import json
+import matplotlib.pyplot as plt
+import numpy as np
 from api import *
 from db_connection import *
 
@@ -16,15 +19,11 @@ def analyse_tweets():
     tweets_df = pd.DataFrame(tweets.clone())
     hashtags_df = pd.DataFrame(hashtags.clone())
 
-    # print(tweets_df.columns)
-    # print()
-    # print(tweets_df['entities'].values[0])
-    # print()
-    # print(tweets_df['entities'].values[0]['hashtags'])
-    # print()
-    # print(tweets_df['entities'].values[0]['hashtags'][0])
-    # print()
-    # print(tweets_df['entities'].values[0]['hashtags'][0]['text'])
+    # Visalization Help Method
+    def add_value_label(x_list,y_list):
+        for i in range(len(x_list)):
+            plt.text(i,y_list[i]/2,y_list[i], ha="center")
+
 
     ### Tweets ###
     number_of_tweets = len(tweets_df['entities'].values)
@@ -87,6 +86,16 @@ def analyse_tweets():
         counter += 1
     print()
 
+    # Visualization
+    user_name = [ tweet['name'] for tweet in top_five_favorite_count['user'].values ]
+    favorite_count = [ count for count in top_five_favorite_count['favorite_count'].values ]
+    plt.bar(user_name, favorite_count)
+    add_value_label(user_name, favorite_count)
+    plt.title('Top five Tweets by favorites')
+    plt.xlabel('Users')
+    plt.ylabel('Favorite Count')
+    # plt.legend(user_name, loc='upper right')          # Funker ikke
+    plt.show()
 
     ### Retweet Count ###
     top_five_retweet_count = tweets_df.copy().sort_values(by=['retweet_count'], ascending=False).head(5)
@@ -102,6 +111,15 @@ def analyse_tweets():
         print(str(counter) + ':   ' + str(retweet_count) + '     ' + user)
         counter += 1
     print()
+
+    # Visualization
+    user_name = [ tweet['name'] for tweet in top_five_retweet_count['user'].values ]
+    retweet_count = [ count for count in top_five_retweet_count['retweet_count'].values ]
+    plt.pie(retweet_count, labels=user_name, autopct='%1.1f%%', textprops={'fontsize': 'x-small'}, startangle=90)   # Prosent   *Funker, men skal ikke være 100%
+    # plt.pie(retweet_count, labels=user_name, autopct=lambda p: '{:.0f}'.format(p * total / 100), startangle=90)   # Tall      *Funker ikke
+    plt.title('Top five Tweets by retweets')
+    plt.legend(title='Users', loc='upper left', fontsize='x-small')   
+    plt.show()
 
 analyse_tweets()
 
