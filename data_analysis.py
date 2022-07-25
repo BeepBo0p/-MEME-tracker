@@ -71,6 +71,7 @@ def analyse_tweets():
         counter += 1
     print()
 
+
     ### Favorite Count ###
     top_five_favorite_count = tweets_df.copy().sort_values(by=['favorite_count'], ascending=False).head(5)
     
@@ -86,11 +87,21 @@ def analyse_tweets():
         counter += 1
     print()
 
+
     ### Retweet Count ###
-    # top_five_retweet_count = tweets_df['retweet_count'].sort_values(by=['retweet_count'], inplace=True).head(5)
-    # print('Top five Tweets by retweets:')
-    # print(top_five_retweet_count)
-    # print()
+    top_five_retweet_count = tweets_df.copy().sort_values(by=['retweet_count'], ascending=False).head(5)
+
+    # Printing
+    print('### Retweet Count ###')
+    print('Top five Tweets by retweets')
+    print('No   Count  User')
+    counter = 1
+    for tweet in range(5):
+        retweet_count = top_five_retweet_count['retweet_count'].values[tweet]
+        user = top_five_retweet_count['user'].values[tweet]['name']
+        print(str(counter) + ':   ' + str(retweet_count) + '     ' + user)
+        counter += 1
+    print()
 
 analyse_tweets()
 
