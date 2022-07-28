@@ -1,7 +1,6 @@
 import tweepy
 import configparser
 import pandas as pd
-import json
 
 def twitter_setup():
 

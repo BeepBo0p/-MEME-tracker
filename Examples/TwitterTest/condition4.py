@@ -1,7 +1,5 @@
 import tweepy
-import configparser
 import pandas as pd
-import json
 from api import *
 
 # Finds number of tweets from Elon Musk where Dogecoin is mentioned in an ID interval

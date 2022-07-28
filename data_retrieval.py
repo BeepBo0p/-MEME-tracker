@@ -1,7 +1,5 @@
 import tweepy
-import configparser
 import pandas as pd
-import json
 from api import *
 
 def retrieve_tweets_by_hashtags():
